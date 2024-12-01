@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "hello-discord-terraform-state"
+    bucket         = "kizzy-terraform-state"
     key            = "remote-state"
     region         = "ap-southeast-2"
     dynamodb_table = "state-lock"
