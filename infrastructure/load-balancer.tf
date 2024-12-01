@@ -10,6 +10,7 @@ resource "aws_lb" "lb" {
   tags = {
     "lab" = "example"
   }
+  
 }
 
 resource "aws_lb_target_group" "backend" {
