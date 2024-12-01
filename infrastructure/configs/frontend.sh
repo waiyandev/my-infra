@@ -28,7 +28,7 @@ sudo npm install -g yarn
 cd /home/ec2-user
 git clone https://github.com/waiyandev/my-infra.git
 sudo chown -R $(whoami):$(whoami) /home/ec2-user/my-infra
-cd example-app/react-frontend
+cd my-infra/react-frontend
 
 # express server ip substitution
 sed -i "s/^REACT_APP_SERVER_IP=.*$/REACT_APP_SERVER_IP=${aws_instance.backend.public_ip}/" .env
