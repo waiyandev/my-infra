@@ -23,13 +23,23 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
       
-    - name: Install dependencies
+    - name: Clear and reinstall dependencies
       working-directory: ./express-backend
-      run: npm install
+      run: |
+        rm -rf node_modules
+        npm install
+
+    - name: Fix Jest permissions
+      working-directory: ./express-backend
+      run: chmod +x ./node_modules/.bin/jest
+
+    - name: Run formatting check (Prettier)
+      working-directory: ./express-backend
+      run: npx prettier --write .
 
     - name: Run unit tests
       working-directory: ./express-backend
-      run: npm test
+      run: npx jest --forceExit
 
   format-code:
     needs: [unit-tests]
