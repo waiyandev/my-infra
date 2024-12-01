@@ -2,10 +2,10 @@ name: Main CI
 on:
   push:
     branches:
-      - main
-      - develop
-      - feat/**
-      - feature/**
+    - main
+    - develop
+    - feat/**
+    - feature/**
   workflow_dispatch:
 
 env:
@@ -22,25 +22,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
-
       
-    - name: Clear and reinstall dependencies
+    - name: Install dependencies
       working-directory: ./express-backend
-      run: |
-        rm -rf node_modules
-        npm install
-
-    - name: Fix Jest permissions
-      working-directory: ./express-backend
-      run: chmod +x ./node_modules/.bin/jest
-
-    - name: Run formatting check (Prettier)
-      working-directory: ./express-backend
-      run: npx prettier --write .
+      run: npm install
 
     - name: Run unit tests
       working-directory: ./express-backend
-      run: npx jest --forceExit
+      run: npm test
 
   format-code:
     needs: [unit-tests]
@@ -67,7 +56,6 @@ jobs:
       run: |
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        
         if [[ $(git status --porcelain) ]]; then
           if ! git add .; then
             echo "Error: Failed to stage files"
@@ -75,16 +63,41 @@ jobs:
           if ! git commit -m "Updated from ref: ${{ github.sha }}"; then
             echo "Error: Failed to commit files"
           fi
-           if ! git push 2>&1 | tee push.log; then
+          if ! git push 2>&1 | tee push.log; then
             if grep -q "403" push.log; then
               echo "Error: Permission denied (HTTP 403). Exiting."
               exit 1
             fi
             if ! git pull --rebase && git push; then
-               echo "Error: failed to push the code after rebase."
+              echo "Error: failed to push the code after rebase."
               exit 1
             fi
           fi
         else
           echo "Nothing to commit."
-        fi   
+        fi
+  deploy-server:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Init
+      working-directory: ./infrastructure
+      run: terraform init
+
+    - name: Terraform Apply
+      working-directory: ./infrastructure
+      run: |
+        terraform taint aws_instance.backend
+        terraform apply -auto-approve
