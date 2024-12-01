@@ -26,8 +26,8 @@ sudo npm install -g yarn
 
 # cloning Git repository
 cd /home/ec2-user
-git clone https://github.com/hasAnybodySeenHarry/example-app.git
-sudo chown -R $(whoami):$(whoami) /home/ec2-user/example-app
+git clone https://github.com/waiyandev/my-infra.git
+sudo chown -R $(whoami):$(whoami) /home/ec2-user/my-infra
 cd example-app/react-frontend
 
 # express server ip substitution

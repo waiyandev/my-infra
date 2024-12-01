@@ -40,7 +40,7 @@ resource "aws_instance" "backend" { // virtual machine
     cd /home/ec2-user
     git clone https://github.com/waiyandev/my-infra.git
 
-    cd example-app/express-backend
+    cd my-infra/express-backend
 
     sudo npm install
 
