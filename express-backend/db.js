@@ -1,11 +1,11 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-    user: "kiz2zy",
-    host: "localhost",
-    database: "discord_db",
-    password: "kix2xy",
-    port: 5432,
+  user: "kiz2zy",
+  host: "localhost",
+  database: "discord_db",
+  password: "kix2xy",
+  port: 5432,
 });
 
 // (async () => {
