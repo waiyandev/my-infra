@@ -23,9 +23,10 @@ jobs:
       working-directory: ./express-backend
       run: npm install
 
-       - name: Fix Jest permissions
+    - name: Fix Jest permissions
       run: chmod +x ./node_modules/.bin/jest
+    
     
     - name: Run unit tests
       working-directory: ./express-backend
-      run: npm test
+      run: npx jest --forceExit
