@@ -1,0 +1,25 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "backend app",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "migrate": "node migrations.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "author": "Kizzy",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
+    "supertest": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
