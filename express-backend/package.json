@@ -4,7 +4,7 @@
   "description": "backend app",
   "main": "app.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest --forceExit",
     "migrate": "node migrations.js"
   },
   "repository": {
