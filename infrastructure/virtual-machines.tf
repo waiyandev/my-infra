@@ -44,7 +44,7 @@ resource "aws_instance" "backend" { // virtual machine
 
     sudo npm install
 
-    nohup node index.js &
+    nohup node app.js &
   EOF
 
   lifecycle {

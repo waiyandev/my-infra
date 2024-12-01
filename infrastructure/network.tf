@@ -34,6 +34,7 @@ resource "aws_security_group" "backend" {
   tags = {
     "lab" = "example"
   }
+
 }
 
 resource "aws_security_group" "frontend" {
