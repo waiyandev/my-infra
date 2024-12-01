@@ -12,6 +12,8 @@ app.get("/api/v1/hello", (req, res) => {
     res.json({ message: "Nin Hao!" });
 });
 
+
+
 // app.get("/api/v1/users", async (req, res) => {
 //     try {
 //         const result = await pool.query("SELECT * FROM users");
