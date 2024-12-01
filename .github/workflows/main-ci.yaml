@@ -29,6 +29,10 @@ jobs:
       working-directory: ./express-backend
       run: chmod +x ./node_modules/.bin/jest
 
+    - name: Run formatting check (Prettier)
+      working-directory: ./express-backend
+      run: npx prettier --write .
+
     - name: Run unit tests
       working-directory: ./express-backend
       run: npx jest --forceExit
