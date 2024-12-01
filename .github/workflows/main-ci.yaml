@@ -40,6 +40,7 @@ jobs:
     - name: Run unit tests
       working-directory: ./express-backend
       run: npx jest --forceExit
+      
 
   format-code:
     needs: [unit-tests]
