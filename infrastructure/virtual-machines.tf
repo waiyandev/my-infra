@@ -38,7 +38,7 @@ resource "aws_instance" "backend" { // virtual machine
     npm -v
 
     cd /home/ec2-user
-    git clone https://github.com/hasAnybodySeenHarry/example-app.git
+    git clone https://github.com/waiyandev/my-infra.git
 
     cd example-app/express-backend
 
@@ -96,7 +96,7 @@ resource "aws_instance" "frontend" { // virtual machine
 
   #   # cloning Git repository
   #   cd /home/ec2-user
-  #   git clone https://github.com/hasAnybodySeenHarry/example-app.git
+  #   git clone https://github.com/waiyandev/my-infra.git
   #   sudo chown -R $(whoami):$(whoami) /home/ec2-user/example-app
   #   cd example-app/react-frontend
 
