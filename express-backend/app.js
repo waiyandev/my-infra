@@ -9,10 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/v1/hello", (req, res) => {
-    res.json({ message: "Nin Hao!" });
+  res.json({ message: "Nin Hao!" });
 });
-
-
 
 // app.get("/api/v1/users", async (req, res) => {
 //     try {
@@ -50,24 +48,24 @@ app.get("/api/v1/hello", (req, res) => {
 
 // default catch-all router
 app.use((req, res) => {
-    res.status(404).json({ error: "Route not found" });
+  res.status(404).json({ error: "Route not found" });
 });
 
 const server = app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
 module.exports = { app, server };
 
 const shutdown = () => {
-    console.log("Received signal to shutdown.");
-    server.close(() => {
-        console.log("Server closed.");
-        pool.end(() => {
-            console.log("Database connections closed.");
-            process.exit(0);
-        });
+  console.log("Received signal to shutdown.");
+  server.close(() => {
+    console.log("Server closed.");
+    pool.end(() => {
+      console.log("Database connections closed.");
+      process.exit(0);
     });
+  });
 };
 
 process.on("SIGINT", shutdown);
