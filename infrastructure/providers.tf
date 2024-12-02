@@ -7,13 +7,13 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "kizzy-terraform-state"
+    bucket         = "kixxy-terraform-state"
     key            = "remote-state"
     region         = "ap-southeast-2"
     dynamodb_table = "state-lock"
     encrypt        = true
   }
-  
+
 }
 
 
