@@ -15,7 +15,7 @@ resource "aws_lb" "lb" {
 }
 
 resource "aws_security_group" "lb" {
-  name        = "http and https only"
+  name        = "http and https only unique"
   description = "Allow http/https traffic from anywhere in the world"
   vpc_id      = data.aws_vpc.default.id
 

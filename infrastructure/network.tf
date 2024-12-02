@@ -10,7 +10,7 @@ data "aws_subnets" "public" {
 }
 
 resource "aws_security_group" "ssh" {
-  name        = "SSH only"
+  name        = "SSH only unique"
   description = "Allow ssh on port 22 from anywhere in the world"
   vpc_id      = data.aws_vpc.default.id
 
@@ -27,7 +27,7 @@ resource "aws_security_group" "ssh" {
 }
 
 resource "aws_security_group" "backend" {
-  name        = "http 3000 only backend"
+  name        = "http 3000 only backend unique"
   description = "Allow http traffic on port 3000 from anywhere in the world"
   vpc_id      = data.aws_vpc.default.id
 
@@ -38,7 +38,7 @@ resource "aws_security_group" "backend" {
 }
 
 resource "aws_security_group" "frontend" {
-  name        = "http 80 only frontend"
+  name        = "http 80 only frontend unique"
   description = "Allow http traffic on port 80 from anywhere in the world"
   vpc_id      = data.aws_vpc.default.id
 
