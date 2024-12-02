@@ -1,5 +1,5 @@
 resource "aws_lb" "lb" {
-  name               = "hello-kizzy"
+  name               = "hello-kixxy"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb.id]
