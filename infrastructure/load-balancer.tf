@@ -13,6 +13,7 @@ resource "aws_lb" "lb" {
   
 }
 
+
 resource "aws_lb_target_group" "backend" {
   name     = "backend-group"
   port     = 3000
