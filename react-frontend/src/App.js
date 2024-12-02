@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('Greeting 👋: ____');
+  const [message, setMessage] = useState('Message: ____');
   const [loading, setLoading] = useState(false);
 
   const handleConnectClick = async () => {
     setLoading(true);
     try {
       const serverIp = process.env.REACT_APP_SERVER_IP;
-      const response = await fetch(`http://${serverIp}:8080/api/v1/hello`);
+      const response = await fetch(`http://${serverIp}:3000/api/v1/hello`);
       if (response.ok) {
         const data = await response.json();
-        setMessage(`Greeting 👋: ${data.message}`);
+        setMessage(`Message: ${data.message}`);
       } else {
         setMessage('Error connecting to backend');
       }
