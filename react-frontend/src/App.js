@@ -12,7 +12,7 @@ function App() {
       const response = await fetch(`http://${serverIp}:3000/api/v1/hello`);
       if (response.ok) {
         const data = await response.json();
-        setMessage(`Message: ${data.message}`);
+        setMessage(`Message Bo Bo: ${data.message}`);
       } else {
         setMessage('Error connecting to backend');
       }
