@@ -5,7 +5,7 @@ describe("GET /api/v1/hello", () => {
   test('should return a JSON response with the message "Nin Hao!leh"', async () => {
     const response = await request(app).get("/api/v1/hello").expect(200);
 
-    expect(response.body.message).toBe("Nin Hao!");
+    expect(response.body.message).toBe("Nin Hao!leh");
   });
 
   test('should not return a JSON response with the message "hi"', async () => {
