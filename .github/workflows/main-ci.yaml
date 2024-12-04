@@ -87,7 +87,7 @@ jobs:
         else
           echo "Nothing to commit."
         fi
-  deploy-server:
+  deploy-code:
     needs: [format-code]
     runs-on: ubuntu-latest
     steps:
@@ -105,12 +105,9 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Terraform Init
-      working-directory: ./infrastructure
-      run: terraform init
 
-    - name: Terraform Apply
+    - name: Run terraform create
       working-directory: ./infrastructure
       run: |
-        # terraform taint aws_instance.backend
+        terraform init
         terraform apply -auto-approve

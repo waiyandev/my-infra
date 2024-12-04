@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/v1/hello", (req, res) => {
-  res.json({ message: "Okay Lah!" });
+  res.json({ message: "Hello discord!" });
 });
 
 // app.get("/api/v1/users", async (req, res) => {
