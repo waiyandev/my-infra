@@ -42,6 +42,7 @@ resource "aws_launch_template" "backend" { // virtual machine
   user_data = filebase64("${path.module}/configs/backend.sh")
  
 }
+
 resource "aws_autoscaling_group" "backend" {
   name                      = "backend"
   max_size                  = 1
