@@ -69,7 +69,7 @@ resource "aws_autoscaling_group" "backend" {
   instance_refresh {
     strategy = "Rolling"
     preferences {
-      max_healthy_percentage = 200
+      max_healthy_percentage = 100
     }
   }
 }
