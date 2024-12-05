@@ -11,7 +11,7 @@ data "aws_ami" "this" { // virtual machine template
   }
 }
 
-resource "aws_launch_template" "backend" { // virtual machine
+resource "aws_launch_template" "backend" { 
   name = "expressjs-backend"
 
   block_device_mappings {
@@ -69,7 +69,8 @@ resource "aws_autoscaling_group" "backend" {
   instance_refresh {
     strategy = "Rolling"
     preferences {
-      max_healthy_percentage = 100
+      max_healthy_percentage = 200
+      min_healthy_percentage = 100
     }
   }
 }
