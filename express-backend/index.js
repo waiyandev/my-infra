@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/v1/hello", (req, res) => {
-  res.json({ message: "Hello facebook!" });
+  res.json({ message: "Hello google!" });
 });
 
 // app.get("/api/v1/users", async (req, res) => {
@@ -57,16 +57,16 @@ const server = app.listen(port, () => {
 
 module.exports = { app, server };
 
-const shutdown = () => {
-  console.log("Received signal to shutdown.");
-  server.close(() => {
-    console.log("Server closed.");
-    pool.end(() => {
-      console.log("Database connections closed.");
-      process.exit(0);
-    });
-  });
-};
+// const shutdown = () => {
+//   console.log("Received signal to shutdown.");
+//   server.close(() => {
+//     console.log("Server closed.");
+//     pool.end(() => {
+//       console.log("Database connections closed.");
+//       process.exit(0);
+//     });
+//   });
+// };
 
-process.on("SIGINT", shutdown);
-process.on("SIGTERM", shutdown);
+// process.on("SIGINT", shutdown);
+// process.on("SIGTERM", shutdown);
