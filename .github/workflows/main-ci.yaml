@@ -67,18 +67,22 @@ jobs:
       run: |
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
         if [[ $(git status --porcelain) ]]; then
           if ! git add .; then
             echo "Error: Failed to stage files"
           fi
+
           if ! git commit -m "Updated from ref: ${{ github.sha }}"; then
             echo "Error: Failed to commit files"
           fi
+
           if ! git push 2>&1 | tee push.log; then
             if grep -q "403" push.log; then
               echo "Error: Permission denied (HTTP 403). Exiting."
               exit 1
             fi
+
             if ! git pull --rebase && git push; then
               echo "Error: failed to push the code after rebase."
               exit 1
@@ -109,5 +113,8 @@ jobs:
     - name: Run terraform create
       working-directory: ./infrastructure
       run: |
+        RUN_NUMBER=${{ github.run_number }}
+
         terraform init
+        sed -i "s/{{RUN_NUMBER}}/${RUN_NUMBER}/g" ./configs/backend.sh
         terraform apply -auto-approve
