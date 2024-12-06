@@ -43,6 +43,8 @@ resource "aws_launch_template" "backend" {
  
 }
 
+/*
+
 resource "aws_autoscaling_group" "backend" {
   name                      = "backend"
   max_size                  = 1
@@ -75,6 +77,7 @@ resource "aws_autoscaling_group" "backend" {
   }
 }
 
+*/
 
 # resource "aws_instance" "frontend" { // virtual machine
 #   ami           = data.aws_ami.this.id
